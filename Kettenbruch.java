@@ -108,15 +108,22 @@ public class Kettenbruch {
      */
     public static int[] berechneEFolge(int n) {
         int [] elemente = new int[n];
-        // bei n >= 1 
+        // bei n >= 1 werden zuerst alle Elemente mit 1 gefüllt
         if (n >= 1) {
             elemente[0] = 2;
             for (int i = 1; i < n; i++) {
-                elemente[i] = 1;
+                elemente[i] = elemente[0];
             }
-            for (int j = 2; j <= elemente.length; j++) {
-                
+            // Falls das Array größer als 5 werder die Werte auf dem index 5, 8, 11 usw.
+            // mit einem im Vergelich zu j-2 um 2 erhöhten Wert gefüllt
+            for (int j = 5; j < elemente.length; j++) {
+                elemente[j] = elemente[j-2] + 2;
+                j++;
             }
+            // Index 2 berichtigen
+        if (n == 2) {
+            elemente[n] = elemente [0];
+        }    
         }   
         return elemente;
     }
